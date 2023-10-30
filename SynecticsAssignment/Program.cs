@@ -1,5 +1,4 @@
 ﻿Console.WriteLine("Please provide a specific year:");
-string year = Console.ReadLine();
 
 string targetYear = Console.ReadLine();
 int intTargetYear;
@@ -16,6 +15,13 @@ try
     line = sr.ReadLine();
     while (line != null)
     {
+        string[] parts = line.Split("##");
+        string[] dateParts = parts[0].Split('/');
+        int year = int.Parse(dateParts[2]);
+        if (year == intTargetYear)
+        {
+
+        }
         line = sr.ReadLine();
     }
 
