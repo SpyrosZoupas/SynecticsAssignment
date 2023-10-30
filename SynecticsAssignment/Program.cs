@@ -1,42 +1,58 @@
-﻿Console.WriteLine("Please provide a specific year:");
+﻿bool running = true;
 
-string targetYear = Console.ReadLine();
-int intTargetYear;
-while (!int.TryParse(targetYear, out intTargetYear))
+while (running)
 {
-    Console.WriteLine("Incorrect input provided; Please provide a specific year.");
-    targetYear = Console.ReadLine();
-}
+    Console.WriteLine("Please provide a specific year:");
 
-String line;
-List<double> incomeList = new List<double>();
-try
-{
-    StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
-    line = sr.ReadLine();
-    while (line != null)
+    string targetYear = Console.ReadLine();
+    int intTargetYear;
+    while (!int.TryParse(targetYear, out intTargetYear))
     {
-        string[] parts = line.Split("##");
-        string[] dateParts = parts[0].Split('/');
-        int year = int.Parse(dateParts[2]);
-        if (year == intTargetYear)
-        {
-            int income = int.Parse(parts[1]);
-            incomeList.Add(income);
-        }
-        line = sr.ReadLine();
+        Console.WriteLine("Incorrect input provided; Please provide a specific year.");
+        targetYear = Console.ReadLine();
     }
 
-    sr.Close();
+    String line;
+    List<double> incomeList = new List<double>();
+    try
+    {
+        StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
+        line = sr.ReadLine();
+        while (line != null)
+        {
+            string[] parts = line.Split("##");
+            string[] dateParts = parts[0].Split('/');
+            int year = int.Parse(dateParts[2]);
+            if (year == intTargetYear)
+            {
+                int income = int.Parse(parts[1]);
+                incomeList.Add(income);
+            }
+            line = sr.ReadLine();
+        }
 
-    double standardDeviation = CalculateStandardDeviation(incomeList);
-    Console.WriteLine(standardDeviation);
+        sr.Close();
 
-    Console.ReadLine();
-}
-catch(Exception e)
-{
-    Console.WriteLine("No data found for year provided.");
+        double standardDeviation = CalculateStandardDeviation(incomeList);
+        Console.WriteLine(standardDeviation);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("No data found for year provided.");
+    }
+
+    Console.WriteLine("Do you want to calculate standard deviation for another year? (Y/N)");
+    string response = Console.ReadLine().Trim().ToLower();
+    while (response != "y" && response != "n")
+    {
+        Console.WriteLine("Please enter either Y for yes or N for no");
+        response = Console.ReadLine().Trim().ToLower();
+    }
+
+    if (response != "y")
+    {
+        running = false;
+    }
 }
 
 static double CalculateStandardDeviation(List<double> data)
