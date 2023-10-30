@@ -9,6 +9,7 @@ while (!int.TryParse(targetYear, out intTargetYear))
 }
 
 String line;
+List<int> incomeList = new List<int>();
 try
 {
     StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
@@ -20,12 +21,17 @@ try
         int year = int.Parse(dateParts[2]);
         if (year == intTargetYear)
         {
-
+            int income = int.Parse(parts[1]);
+            incomeList.Add(income);
         }
         line = sr.ReadLine();
     }
 
     sr.Close();
+
+    double standardDeviation = CalculateStandardDeviation(incomeList);
+    Console.WriteLine(standardDeviation);
+
     Console.ReadLine();
 }
 catch(Exception e)
