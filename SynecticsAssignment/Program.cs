@@ -1,6 +1,13 @@
 ﻿Console.WriteLine("Please provide a specific year:");
 string year = Console.ReadLine();
 
+string targetYear = Console.ReadLine();
+int intTargetYear;
+while (!int.TryParse(targetYear, out intTargetYear))
+{
+    Console.WriteLine("Incorrect input provided; Please provide a specific year.");
+    targetYear = Console.ReadLine();
+}
 
 String line;
 try
