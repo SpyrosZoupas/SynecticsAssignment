@@ -36,7 +36,7 @@ try
 }
 catch(Exception e)
 {
-    Console.WriteLine(e.Message);
+    Console.WriteLine("No data found for year provided.");
 }
 
 static double CalculateStandardDeviation(List<double> data)
