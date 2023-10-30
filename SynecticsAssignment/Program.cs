@@ -1,5 +1,8 @@
-﻿String line;
+﻿Console.WriteLine("Please provide a specific year:");
+string year = Console.ReadLine();
 
+
+String line;
 try
 {
     StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
