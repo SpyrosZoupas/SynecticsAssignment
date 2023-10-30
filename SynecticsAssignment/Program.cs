@@ -41,7 +41,8 @@ catch(Exception e)
 
 static double CalculateStandardDeviation(List<double> data)
 {
-    return Math.Sqrt(CalculateVariance(data));
+    double standardDeviation = Math.Sqrt(CalculateVariance(data));
+    return Math.Round(standardDeviation, 2);
 }
 
 static double CalculateVariance(List<double> data)
