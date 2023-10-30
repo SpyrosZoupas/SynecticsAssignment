@@ -9,7 +9,7 @@ while (!int.TryParse(targetYear, out intTargetYear))
 }
 
 String line;
-List<int> incomeList = new List<int>();
+List<double> incomeList = new List<double>();
 try
 {
     StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
@@ -37,4 +37,10 @@ try
 catch(Exception e)
 {
     Console.WriteLine(e.Message);
+}
+
+static double CalculateStandardDeviation(List<double> data)
+{
+    double average = data.Average();
+    return Math.Sqrt(data.Average(v => Math.Pow(v - average, 2)) / data.Count);
 }
