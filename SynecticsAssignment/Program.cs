@@ -41,6 +41,12 @@ catch(Exception e)
 
 static double CalculateStandardDeviation(List<double> data)
 {
+    return Math.Sqrt(CalculateVariance(data));
+}
+
+static double CalculateVariance(List<double> data)
+{
     double average = data.Average();
-    return Math.Sqrt(data.Average(v => Math.Pow(v - average, 2)) / data.Count);
+    double variance = data.Average(d => Math.Pow(d - average, 2));
+    return variance;
 }
