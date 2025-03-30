@@ -16,7 +16,7 @@ while (running)
     List<double> incomeList = new List<double>();
     try
     {
-        StreamReader sr = new StreamReader("C:\\Users\\spiro\\source\\repos\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
+        StreamReader sr = new StreamReader("C:\\Projects\\SynecticsAssignment\\SynecticsAssignment\\DEV-data.txt");
         line = sr.ReadLine();
         while (line != null)
         {
